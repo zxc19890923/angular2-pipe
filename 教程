@@ -13,6 +13,7 @@ export class NumberPipe implements PipeTransform {
     return value * 10 * arg;
   }
 }
+
 2、在app.module.ts主模块中引入管道
 
 ...
@@ -23,6 +24,7 @@ import {Number} from "../pipe/number.pipe";
     ]
 })
 ...
+
 3、组件模板中使用
 
 <alert>管道使用实例</alert>
