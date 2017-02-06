@@ -1,0 +1,33 @@
+1、定义管道(number.pipe.ts)
+
+// 导入模块
+import {Pipe, PipeTransform} from "@angular/core";
+// 管道名称
+@Pipe({name: "numberPipe"})
+export class NumberPipe implements PipeTransform {
+  // 参数说明:
+  // value是在使用管道的时候,获取的所在对象的值
+  // 后面可以跟若干个参数
+  // arg: 自定义参数, 数字类型, 使用的时候, 使用冒号添加在管道名称后面
+  transform(value:number, arg:number) {
+    return value * 10 * arg;
+  }
+}
+2、在app.module.ts主模块中引入管道
+
+...
+import {Number} from "../pipe/number.pipe";
+@ngModule({
+    declarations: [
+        NumberPipe
+    ]
+})
+...
+3、组件模板中使用
+
+<alert>管道使用实例</alert>
+<p>
+    <input type="text" [(ngModel)]="number" name="number" class="form-control"/>
+</p>
+<!-- 不仅获取当前值，而且传递了一个参数，使用冒号添加到后面 -->
+<p>{{number | numberPipe:10}}</p>
